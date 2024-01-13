@@ -14,6 +14,7 @@ from pathlib import Path
 import environ
 env = environ.Env()
 environ.Env.read_env()
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,15 +90,9 @@ WSGI_APPLICATION = 'mamar_bank.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-    }
-}
+    'default': dj_database_url.config(                
+        default='postgres://mamarbank_dxu6_user:enRYgyexOR9W9dkUsCu0Tf0pr18VhGst@dpg-cmh4mq6n7f5s739os2ig-a.oregon-postgres.render.com/mamarbank_dxu6',        
+         )}
 
 
 
